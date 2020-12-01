@@ -4,18 +4,15 @@ An Eleventy [paired shortcode](https://www.11ty.dev/docs/shortcodes/#paired-shor
 ## What does it do?
 It turns paired shortcodes like this:
 
-{% raw %}
 ```js
 {% respimage 
     "image.jpg", 
     "Some alt text", 
+    "./images/",
     "{ small: 320, med: 640, large: 1024 }",
     "(min-width: 450px) 33.3vw, 100vw",
-    "./images/"
-%}
-{% endrespimage %}
+%}{% endrespimage %}
 ```
-{% endraw %}
 
 into responsive image markup using `<picture>` tags like this:
 
@@ -59,7 +56,6 @@ If you have global `.json` data like this,
 ```
 you can use the paired shortcode to generate `<picture>` tags like this,
 
-{% raw %}
 ```js
 {% respimage 
     item.src, 
@@ -71,4 +67,3 @@ you can use the paired shortcode to generate `<picture>` tags like this,
 %}
 {% endrespimage %}
 ```
-{% endraw %}
