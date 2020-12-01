@@ -1,0 +1,22 @@
+[
+    {
+        "src": "test.png",
+        "alt": "some alt text",
+        "sizes": "(min-width: 450px) 33.3vw, 100vw",
+        "widths": {
+            "small": "320",
+            "med": "640",
+            "large": "1024"
+        }
+    },
+    {
+        "src": "hey.png",
+        "alt": "lol you nerd",
+        "sizes": "(min-width: 450px) 33.3vw, 100vw",
+        "widths": {
+            "small": "320",
+            "med": "640",
+            "large": "1024"
+        }
+    }
+]

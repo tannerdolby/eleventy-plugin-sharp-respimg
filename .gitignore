@@ -1,0 +1,8 @@
+# Cache Assets output
+.cache
+
+# Node Modules
+node_modules
+
+# Eleventy _site output
+_site

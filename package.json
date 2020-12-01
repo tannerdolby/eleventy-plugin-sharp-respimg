@@ -1,0 +1,39 @@
+{
+  "name": "eleventy-plugin-sharp-respimg",
+  "version": "1.0.0",
+  "description": "A paired shortcode which performs build-time image transformations with Sharp and generates responsive image markup.",
+  "main": ".eleventy.js",
+  "scripts": {
+    "build": "eleventy build",
+    "start": "eleventy --serve",
+    "debug": "DEBUG=* eleventy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tannerdolby/eleventy-plugin-sharp-respimg.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tannerdolby/eleventy-plugin-sharp-respimg/issues/"
+  },
+  "homepage": "https://github.com/tannerdolby/eleventy-plugin-sharp-respimg/#readme",
+  "keywords": [
+    "responsive-images",
+    "images",
+    "eleventy",
+    "11ty"
+  ],
+  "author": {
+    "url": "https://github.com/tannerdolby",
+    "email": "tannercdolby@gmail.com",
+    "name": "Tanner Dolby"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@11ty/eleventy": "^0.11.1",
+    "sharp": "^0.26.3"
+  }
+}
