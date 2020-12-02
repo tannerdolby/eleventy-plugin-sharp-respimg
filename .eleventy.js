@@ -2,7 +2,7 @@ const sharp = require("sharp");
 const fs = require("fs");
 
 module.exports = (eleventyConfig) => {
-    eleventyConfig.addPairedShortcode("respimage", (data, src, alt, imgDir, widths, sizes) => {
+    eleventyConfig.addPairedShortcode("respimg", (data, src, alt, imgDir, widths, sizes) => {
         const fileName = src.slice(0, -4);
 
         function bytesToKB(bytes) {

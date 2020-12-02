@@ -19,13 +19,13 @@ module.exports = (eleventyConfig) => {
 It turns paired shortcodes like this:
 
 ```js
-{% respimage 
+{% respimg 
     "car.jpg", 
     "Photo of a car", 
     "./images/",
     { small: 320, med: 640, large: 1024 },
     "(min-width: 450px) 33.3vw, 100vw",
-%}{% endrespimage %}
+%}{% endrespimg %}
 ```
 into responsive image markup using `<picture>` tags like this:
 ```html
@@ -86,13 +86,13 @@ you can use the paired shortcode to transform multiple images into responsive im
 
 ```js
 {% for image in data %}
-    {% respimage 
+    {% respimg 
         image.src, 
         image.alt, 
         image.imgDir,
         image.widths, 
         image.sizes 
-    %}{% endrespimage %}
+    %}{% endrespimg %}
 {% endfor %}
 ```
 
