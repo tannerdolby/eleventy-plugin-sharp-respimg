@@ -1,5 +1,5 @@
 # eleventy-plugin-sharp-respimg
-An Eleventy [paired shortcode](https://www.11ty.dev/docs/shortcodes/#paired-shortcodes) that performs build-time image transformations to resize large images into `.jpeg` and `.webp` formats and generate `<picture>` tags for responsive images.
+An Eleventy [paired shortcode](https://www.11ty.dev/docs/shortcodes/#paired-shortcodes) that performs build-time image transformations to resize large images into `.jpeg` and `.webp` formats and generates `<picture>` tags for responsive images.
 
 ## What does it do?
 It turns paired shortcodes like this:
@@ -90,7 +90,7 @@ you can use the paired shortcode to transform multiple images into responsive im
 | ------    | -------     |
 | src       | The filename for an image. |
 | alt       | A text description of the image. |
-| image directory | The directory in which the image file is located. |
+| image directory | The directory where the image file is located. |
 | widths    | The desired image widths. Supports 320px, 640px, 1024px. |
 | sizes     | The `sizes` attribute which defines a set of media conditions. |
 
