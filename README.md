@@ -3,11 +3,11 @@ An Eleventy [paired shortcode](https://www.11ty.dev/docs/shortcodes/#paired-shor
 
 ## Installation
 Install the [plugin](https://github.com/tannerdolby/eleventy-plugin-sharp-respimg) from npm.
-```
+```js
 npm install eleventy-plugin-sharp-respimg
 ```
 Add the plugin to your Eleventy Config file,
-```
+```js
 const respimg = require("eleventy-plugin-sharp-respimg");
 
 module.exports = (eleventyConfig) => {
