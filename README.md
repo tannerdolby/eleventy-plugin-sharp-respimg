@@ -1,5 +1,5 @@
 # eleventy-plugin-sharp-respimg
-An Eleventy [paired shortcode](https://www.11ty.dev/docs/shortcodes/#paired-shortcodes) that performs build-time image transformations to resize large images into `.jpeg` and `.webp` formats and generates `<picture>` tags for responsive images.
+An Eleventy [paired shortcode](https://www.11ty.dev/docs/shortcodes/#paired-shortcodes) that performs build-time image transformations to resize large images into `.jpeg` and `.webp` formats and generate `<picture>` tags for responsive images.
 
 ## What does it do?
 It turns paired shortcodes like this:
@@ -40,7 +40,7 @@ into responsive image markup using `<picture>` tags like this:
 - Using `srcset` and `sizes`, you can deliver [variable-resolution images](https://www.smashingmagazine.com/2014/05/responsive-images-done-right-guide-picture-srcset/), which respond to variable layout widths and screen densities.
 
 ## Transform mulitple images
-The real power of using paired shortcodes is the ability to use data from [global data files](https://www.11ty.dev/docs/data-global/) or [front matter](https://www.11ty.dev/docs/data-frontmatter/) to transform multiple images at once.
+The real power of using this paired shortcode is the ability to use data from [global data files](https://www.11ty.dev/docs/data-global/) or [front matter](https://www.11ty.dev/docs/data-frontmatter/) to transform multiple images at once.
 
 If you have global JSON data `data.json` which is an array of objects like this,
 
