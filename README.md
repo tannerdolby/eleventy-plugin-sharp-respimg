@@ -1,5 +1,5 @@
 # eleventy-plugin-sharp-respimg
-An Eleventy [paired shortcode](https://www.11ty.dev/docs/shortcodes/#paired-shortcodes) which transforms large sized images into resized `.jpeg` and `.webp` formats and generates `<picture>` tags for responsive images.
+An Eleventy [paired shortcode](https://www.11ty.dev/docs/shortcodes/#paired-shortcodes) which uses build-time image transformations to resize large images into `.jpeg` and `.webp` formats and generates `<picture>` tags for responsive images.
 
 ## What does it do?
 It turns paired shortcodes like this:
