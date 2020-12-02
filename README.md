@@ -3,7 +3,7 @@ An Eleventy [paired shortcode](https://www.11ty.dev/docs/shortcodes/#paired-shor
 
 ## Installation
 In your Eleventy project, [install the plugin](https://www.npmjs.com/package/eleventy-plugin-sharp-respimg) from npm:
-```js
+```
 npm install eleventy-plugin-sharp-respimg
 ```
 Then add it to your [Eleventy Config](https://www.11ty.dev/docs/config/) file:
