@@ -6,7 +6,7 @@ In your Eleventy project, [install the plugin](https://www.npmjs.com/package/ele
 ```js
 npm install eleventy-plugin-sharp-respimg
 ```
-Then add the plugin to your [Eleventy Config](https://www.11ty.dev/docs/config/) file like this:
+Then add the plugin to your [Eleventy Config](https://www.11ty.dev/docs/config/) file:
 ```js
 const respimg = require("eleventy-plugin-sharp-respimg");
 
