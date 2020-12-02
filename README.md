@@ -6,7 +6,7 @@ It turns paired shortcodes like this:
 
 ```js
 {% respimage 
-    "photo.jpg", 
+    "car.jpg", 
     "Some alt text", 
     "./images/",
     { small: 320, med: 640, large: 1024 },
@@ -20,25 +20,24 @@ into responsive image markup using `<picture>` tags like this:
  <picture>
     <source 
         type="image/webp"
-        srcSet="/images/photo-large.webp 1024w,
-                /images/photo-med.webp 640w,
-                /images/photo-small.webp 320w"
+        srcSet="/images/car-large.webp 1024w,
+                /images/car-med.webp 640w,
+                /images/car-small.webp 320w"
         sizes="(min-width: 450px) 33.3vw, 100vw"
     >
     <img 
-        srcSet='/images/photo-large.jpg 1024w,
-                /images/photo-med.jpg 640w,
-                /images/photo-small.jpg 320w'
+        srcSet='/images/car-large.jpg 1024w,
+                /images/car-med.jpg 640w,
+                /images/car-small.jpg 320w'
         sizes='(min-width: 450px) 33.3vw, 100vw'
-        src='photo-small.jpg'
+        src='car-small.jpg'
         alt='Some alt text'
         loading='lazy'
     >
 </picture>
 ```
-
 - The images are responsive by using a `<picture>` element which contains zero or more `<source>` elements and one `<img>` element to offer alternative versions of an image for different display/device scenarios. 
-- Using `srcset` and `sizes`, they work together to deliver [variable-resolution images](https://www.smashingmagazine.com/2014/05/responsive-images-done-right-guide-picture-srcset/), which respond to variable layout widths and screen densities.
+- Using `srcset` and `sizes`, you can deliver [variable-resolution images](https://www.smashingmagazine.com/2014/05/responsive-images-done-right-guide-picture-srcset/), which respond to variable layout widths and screen densities.
 
 ## Transform mulitple images from other data sources
 The real power of using paired shortcodes is the ability to use data from [global data files](https://www.11ty.dev/docs/data-global/) or [front matter](https://www.11ty.dev/docs/data-frontmatter/) as arguments.
@@ -84,6 +83,16 @@ you can use the paired shortcode to transform multiple images into responsive im
     %}{% endrespimage %}
 {% endfor %}
 ```
+
+## Paired shortcode options
+
+| Parameter | Description |
+| ------    | -------     |
+| src       | The filename for an image. |
+| alt       | A text description of the image. |
+| image directory | The directory in which the image file is located. |
+| widths    | The desired image widths. Supports 320px, 640px, 1024px. |
+| sizes     | The `sizes` attribute which defines a set of media conditions. |
 
 ## Notes
 - Use `./` when declaring the image directory parameter as Sharp expects this.
