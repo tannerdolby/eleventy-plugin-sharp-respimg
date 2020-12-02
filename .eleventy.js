@@ -1,11 +1,8 @@
 const sharp = require("sharp");
 const fs = require("fs");
 
-// 1 byte = 0.001 kilobytes (kb) 1 / 1e-3
-// 1 byte = 0.000001 megabytes (mb) 1 / 1e-6
-
 module.exports = (eleventyConfig) => {
-    eleventyConfig.addPairedShortcode("respimage", (data, src, alt, widths, sizes, imgDir) => {
+    eleventyConfig.addPairedShortcode("respimage", (data, src, alt, imgDir, widths, sizes) => {
         const fileName = src.slice(0, -4);
 
         function bytesToKB(bytes) {
@@ -120,7 +117,7 @@ module.exports = (eleventyConfig) => {
             medWebp(parentStream, fileName);
             largeWebp(parentStream, fileName);
 
-            console.log("Transforming images, one moment!");
+            console.log("Transforming image, one moment!");
         }
 
         const path = imgDir.replace(/^[.]/gm, "");
@@ -141,7 +138,8 @@ module.exports = (eleventyConfig) => {
                 srcSet="${path}${fileName}-large.webp ${widths.large}w,
                     ${path}${fileName}-med.webp ${widths.med}w,
                     ${path}${fileName}-small.webp ${widths.small}w"
-                sizes="${sizes}">
+                sizes="${sizes}"
+            >
             ${imgMarkup}
         </picture>`
 

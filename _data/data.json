@@ -2,6 +2,7 @@
     {
         "src": "test.png",
         "alt": "some alt text",
+        "imgDir": "./images/",
         "sizes": "(min-width: 450px) 33.3vw, 100vw",
         "widths": {
             "small": "320",
@@ -12,6 +13,7 @@
     {
         "src": "hey.png",
         "alt": "lol you nerd",
+        "imgDir": "./images/",
         "sizes": "(min-width: 450px) 33.3vw, 100vw",
         "widths": {
             "small": "320",

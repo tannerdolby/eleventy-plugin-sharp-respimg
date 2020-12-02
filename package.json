@@ -1,7 +1,7 @@
 {
   "name": "eleventy-plugin-sharp-respimg",
-  "version": "1.0.0",
-  "description": "A paired shortcode which performs build-time image transformations with Sharp and generates responsive image markup.",
+  "version": "1.0.1",
+  "description": "An Eleventy paired shortcode which performs build-time image transformations with Sharp and generates `<picture>` tags for responsive image markup.",
   "main": ".eleventy.js",
   "scripts": {
     "build": "eleventy build",
