@@ -7,15 +7,13 @@ It turns paired shortcodes like this:
 ```js
 {% respimage 
     "car.jpg", 
-    "Some alt text", 
+    "Photo of a car", 
     "./images/",
     { small: 320, med: 640, large: 1024 },
     "(min-width: 450px) 33.3vw, 100vw",
 %}{% endrespimage %}
 ```
-
 into responsive image markup using `<picture>` tags like this:
-
 ```html
  <picture>
     <source 
@@ -31,7 +29,7 @@ into responsive image markup using `<picture>` tags like this:
                 /images/car-small.jpg 320w'
         sizes='(min-width: 450px) 33.3vw, 100vw'
         src='car-small.jpg'
-        alt='Some alt text'
+        alt='Photo of a car'
         loading='lazy'
     >
 </picture>
@@ -49,7 +47,7 @@ If you have global JSON data `data.json` which is an array of objects like this,
     {
         "src": "car.jpg",
         "imgDir": "./images/",
-        "alt": "A picture of a car",
+        "alt": "Photo of a car",
         "sizes": "(min-width: 450px) 33.3vw, 100vw",
         "widths": {
             "small": "320",
@@ -60,7 +58,7 @@ If you have global JSON data `data.json` which is an array of objects like this,
     {
         "src": "flower.jpg",
         "imgDir": "./images/",
-        "alt": "A picture of a flower",
+        "alt": "Photo of a flower",
         "sizes": "(min-width: 450px) 33.3vw, 100vw",
         "widths": {
             "small": "320",
@@ -102,6 +100,7 @@ you can use the paired shortcode to transform multiple images into responsive im
 - [ ] Add support for more custom widths, currently only supports (1024, 640, 320)
 - [ ] If an image is smaller than 1024px, figure out what sizes to resize too or whether images must be larger than 1024px to perform image transformations.
 - [ ] Possibly remove widths and make the parameter optional where the default width values are (1024, 640, 320) and once support is added could utilize more widths like (200, 300, 400, etc) if needed.
+- [ ] Make the widths parameter an array of values rather than an object.
 
 ## Other Responsive Image Plugins
 - [eleventy-img](https://github.com/11ty/eleventy-img)
