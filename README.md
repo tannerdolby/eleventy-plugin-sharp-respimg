@@ -6,10 +6,10 @@ It turns paired shortcodes like this:
 
 ```js
 {% respimage 
-    "image.jpg", 
+    "photo.jpg", 
     "Some alt text", 
     "./images/",
-    "{ small: 320, med: 640, large: 1024 }",
+    { small: 320, med: 640, large: 1024 },
     "(min-width: 450px) 33.3vw, 100vw",
 %}{% endrespimage %}
 ```
@@ -20,50 +20,72 @@ into responsive image markup using `<picture>` tags like this:
  <picture>
     <source 
         type="image/webp"
-        srcSet="/images/test-large.webp 1024w,
-                /images/test-med.webp 640w,
-                /images/test-small.webp 320w"
+        srcSet="/images/photo-large.webp 1024w,
+                /images/photo-med.webp 640w,
+                /images/photo-small.webp 320w"
         sizes="(min-width: 450px) 33.3vw, 100vw"
     >
     <img 
-        srcSet='/images/test-large.jpg 1024w,
-                /images/test-med.jpg 640w,
-                /images/test-small.jpg 320w'
+        srcSet='/images/photo-large.jpg 1024w,
+                /images/photo-med.jpg 640w,
+                /images/photo-small.jpg 320w'
         sizes='(min-width: 450px) 33.3vw, 100vw'
-        src='test-small.jpg'
-        alt='some alt text'
+        src='photo-small.jpg'
+        alt='Some alt text'
         loading='lazy'
     >
 </picture>
 ```
 
-## Use Other Data Sources
+## Transform mulitple images from other data sources
 The real power of using paired shortcodes is the ability to use data from [global data files](https://www.11ty.dev/docs/data-global/) or [front matter](https://www.11ty.dev/docs/data-frontmatter/) as arguments.
 
-If you have global `.json` data like this,
+If you have global JSON data like this (`data.json`),
 
 ```json
-{
-    "src": "test.png",
-    "alt": "some alt text",
-    "sizes": "(min-width: 450px) 33.3vw, 100vw",
-    "widths": {
-        "small": "320",
-        "med": "640",
-        "large": "1024"
+[
+    {
+        "src": "car.jpg",
+        "imgDir": "./images/",
+        "alt": "A picture of a car",
+        "sizes": "(min-width: 450px) 33.3vw, 100vw",
+        "widths": {
+            "small": "320",
+            "med": "640",
+            "large": "1024"
+        }
+    },
+    {
+        "src": "flower.jpg",
+        "imgDir": "./images/",
+        "alt": "A picture of a flower",
+        "sizes": "(min-width: 450px) 33.3vw, 100vw",
+        "widths": {
+            "small": "320",
+            "med": "640",
+            "large": "1024"
+        }
     }
-}
 ```
-you can use the paired shortcode to generate `<picture>` tags like this,
+you can use the paired shortcode to transform multiple images into responsive image markup using a `for` loop like this,
 
 ```js
-{% respimage 
-    item.src, 
-    item.alt, 
-    item.size, 
-    item.sizes, 
-    "./images/", 
-    "my-img" 
-%}
-{% endrespimage %}
+{% for image in data %}
+    {% respimage 
+        item.src, 
+        item.alt, 
+        item.imgDir,
+        item.widths, 
+        item.sizes 
+    %}{% endrespimage %}
+{% endfor %}
 ```
+
+## TODO
+- [ ] Add support for more custom widths, currently only supports (1024, 640, 320)
+- [ ] If an image is smaller than 1024px, figure out what sizes to resize too or whether images must be larger than 1024px to perform image transformations.
+
+## Other Responsive Image Plugins
+- [eleventy-img](https://github.com/11ty/eleventy-img)
+- [eleventy-respimg](https://github.com/eeeps/eleventy-respimg)
+- [eleventy-plugin-responsive-images](https://github.com/adamculpepper/eleventy-plugin-responsive-images)
