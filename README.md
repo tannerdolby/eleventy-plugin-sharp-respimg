@@ -36,6 +36,8 @@ into responsive image markup using `<picture>` tags like this:
     >
 </picture>
 ```
+- The images are responsive by using a `<picture>` element which contains zero or more `<source>` elements and one `<img>` element to offer alternative versions of an image for different display/device scenarios. 
+- Using `srcset` and `sizes`, the `<picture>` and `<img>` tags deliver [variable-resolution images](https://www.smashingmagazine.com/2014/05/responsive-images-done-right-guide-picture-srcset/), which respond to variable layout widths and screen densities.
 
 ## Transform mulitple images from other data sources
 The real power of using paired shortcodes is the ability to use data from [global data files](https://www.11ty.dev/docs/data-global/) or [front matter](https://www.11ty.dev/docs/data-frontmatter/) as arguments.
@@ -81,9 +83,6 @@ you can use the paired shortcode to transform multiple images into responsive im
     %}{% endrespimage %}
 {% endfor %}
 ```
-The images are responsive by using a `<picture>` element which contains zero or more `<source>` elements and one `<img>` element to offer alternative versions of an image for different display/device scenarios. 
-
-Using `srcset` and `sizes`, the `<picture>` and `<img>` tags deliver [variable-resolution images](https://www.smashingmagazine.com/2014/05/responsive-images-done-right-guide-picture-srcset/), which respond to variable layout widths and screen densities
 
 ## Notes
 - Use `./` when declaring the image directory parameter as Sharp expects this.
