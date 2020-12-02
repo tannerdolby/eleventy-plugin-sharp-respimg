@@ -2,11 +2,11 @@
 An Eleventy [paired shortcode](https://www.11ty.dev/docs/shortcodes/#paired-shortcodes) that performs build-time image transformations with [Sharp](https://sharp.pixelplumbing.com/) to resize large images into `.jpeg` and `.webp` formats with varying dimensions and generates `<picture>` tags for responsive images.
 
 ## Installation
-Install the [plugin](https://github.com/tannerdolby/eleventy-plugin-sharp-respimg) from npm.
+In your Eleventy project, [install the plugin](https://github.com/tannerdolby/eleventy-plugin-sharp-respimg) from npm:
 ```js
 npm install eleventy-plugin-sharp-respimg
 ```
-Add the plugin to your Eleventy Config file,
+Then add the plugin to your [Eleventy Config](https://www.11ty.dev/docs/config/) file like this:
 ```js
 const respimg = require("eleventy-plugin-sharp-respimg");
 
@@ -54,7 +54,7 @@ into responsive image markup using `<picture>` tags like this:
 ## Transform mulitple images
 The real power of using this paired shortcode is the ability to use data from [global data files](https://www.11ty.dev/docs/data-global/) or [front matter](https://www.11ty.dev/docs/data-frontmatter/) to transform multiple images at once.
 
-If you have global JSON data `data.json` which is an array of objects like this,
+If you have global JSON data `data.json` which is an array of objects like this:
 
 ```json
 [
@@ -82,7 +82,7 @@ If you have global JSON data `data.json` which is an array of objects like this,
     }
 ]
 ```
-you can use the paired shortcode to transform multiple images into responsive image markup using a `for` loop like this,
+you can use the paired shortcode to transform multiple images into responsive image markup using a `for` loop like this:
 
 ```js
 {% for image in data %}
