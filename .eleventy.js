@@ -120,13 +120,13 @@ module.exports = (eleventyConfig, pluginNamespace) => {
             }
             const imgMarkup = 
             `<img 
-                srcSet='${imgDir}${fileName}-large.jpg ${widths.large}w,
+                srcSet="${imgDir}${fileName}-large.jpg ${widths.large}w,
                     ${imgDir}${fileName}-med.jpg ${widths.med}w,
-                    ${imgDir}${fileName}-small.jpg ${widths.small}w'
-                sizes='${sizes}'
-                src='${imgDir}${fileName}-small.jpg' 
-                alt='${alt}'
-                loading='lazy'>`;
+                    ${imgDir}${fileName}-small.jpg ${widths.small}w"
+                sizes="${sizes}"
+                src="${imgDir}${fileName}-small.jpg"
+                alt="${alt}"
+                loading="lazy">`;
             const pictureMarkup =
             `<picture>
                 <source 
