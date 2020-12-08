@@ -54,14 +54,14 @@ into responsive image markup using `<picture>` tags like this:
 ## Transform mulitple images
 The real power of using this paired shortcode is the ability to use data from [global data files](https://www.11ty.dev/docs/data-global/) or [front matter](https://www.11ty.dev/docs/data-frontmatter/) to transform multiple images at once.
 
-If you have global JSON data `data.json` which is an array of objects like this:
+If you have global JSON data stored in `data.json` which is an array of objects like this:
 
 ```json
 [
     {
         "src": "car.jpg",
-        "imgDir": "./images/",
         "alt": "Photo of a car",
+        "imgDir": "./images/",
         "widths": {
             "small": 320,
             "med": 640,
@@ -71,8 +71,8 @@ If you have global JSON data `data.json` which is an array of objects like this:
     },
     {
         "src": "flower.jpg",
-        "imgDir": "./images/",
         "alt": "Photo of a flower",
+        "imgDir": "./images/",
         "widths": {
             "small": 400,
             "med": 600,
@@ -114,8 +114,8 @@ you can use the paired shortcode to transform multiple images with varying dimen
 
 ## TODO
 - [ ] Allow the widths parameter to be an array of values rather than an object.
-- [ ] If an image is smaller than the largest specified width value, figure out whether the image should be resized, as I don't want a small image transformed into larger dimensions than the intrinsic size.
-- [ ] I have set the quality at `quality: 85`, maybe allow `quality` to be an optional param if you need very high quality images.
+- [ ] If an image is smaller than the largest specified width value, decide if the image should be resized, as I don't want a small image transformed into larger dimensions than the intrinsic size.
+- [ ] Image quality is set at `quality: 85`, maybe allow `quality` to be an optional param if you need very high quality images.
 
 ## Other Responsive Image Plugins
 - [eleventy-img](https://github.com/11ty/eleventy-img)
