@@ -24,7 +24,7 @@ It turns paired shortcodes like this:
     "Photo of a car", 
     "./images/",
     { small: 320, med: 640, large: 1024 },
-    "(min-width: 450px) 33.3vw, 100vw",
+    "(min-width: 450px) 33.3vw, 100vw"
 %}{% endrespimg %}
 ```
 into responsive image markup using `<picture>` tags like this:
@@ -38,13 +38,13 @@ into responsive image markup using `<picture>` tags like this:
         sizes="(min-width: 450px) 33.3vw, 100vw"
     >
     <img 
-        srcSet='/images/car-large.jpg 1024w,
+        srcSet="/images/car-large.jpg 1024w,
                 /images/car-med.jpg 640w,
-                /images/car-small.jpg 320w'
-        sizes='(min-width: 450px) 33.3vw, 100vw'
-        src='car-small.jpg'
-        alt='Photo of a car'
-        loading='lazy'
+                /images/car-small.jpg 320w"
+        sizes="(min-width: 450px) 33.3vw, 100vw"
+        src="car-small.jpg"
+        alt="Photo of a car"
+        loading="lazy"
     >
 </picture>
 ```
