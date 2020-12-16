@@ -54,8 +54,8 @@ into responsive image markup using `<picture>` tags like this:
     >
 </picture>
 ```
-
-If you have already used the paired shortcode to transform an image and you call `respimg` within your code again for the same file, it will only generate the responsive image markup with `<picture>` for that image and forego the image transformation as it checks the file system to make sure those resized images already exist.
+### Using the paired shortcode more than once for the same image
+If you have already used the utility to transform an image and you call `respimg` within your code again for the same file, it will only generate the responsive image markup using `<picture>` for that image and skip the image transformation as it checks the file system to make sure those resized images already exist.
 
 - The images are responsive by using a `<picture>` element which contains zero or more `<source>` elements and one `<img>` element to offer alternative versions of an image for different display/device scenarios. 
 - Using `srcset` and `sizes`, you can deliver [variable-resolution images](https://www.smashingmagazine.com/2014/05/responsive-images-done-right-guide-picture-srcset/), which respond to variable layout widths and screen densities.
