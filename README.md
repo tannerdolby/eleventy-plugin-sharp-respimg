@@ -54,11 +54,11 @@ into responsive image markup using `<picture>` tags like this:
     >
 </picture>
 ```
-### Using the paired shortcode more than once for the same image
-If you have already used the utility to transform an image and you call `respimg` within your code again for the same file, it will only generate the responsive image markup using `<picture>` for that image and skip the image transformation as it checks the file system to make sure those resized images already exist.
-
 - The images are responsive by using a `<picture>` element which contains zero or more `<source>` elements and one `<img>` element to offer alternative versions of an image for different display/device scenarios. 
 - Using `srcset` and `sizes`, you can deliver [variable-resolution images](https://www.smashingmagazine.com/2014/05/responsive-images-done-right-guide-picture-srcset/), which respond to variable layout widths and screen densities.
+
+### Using the paired shortcode more than once for the same image
+If you have already used the utility to transform an image and you call `respimg` within your code again for the same file, it will only generate the responsive image markup using `<picture>` for that image and skip the image transformation as it checks the file system to make sure those resized images already exist.
 
 ## Transform mulitple images
 The real power of using this paired shortcode is the ability to use data from [global data files](https://www.11ty.dev/docs/data-global/) or [front matter](https://www.11ty.dev/docs/data-frontmatter/) to transform multiple images at once.
