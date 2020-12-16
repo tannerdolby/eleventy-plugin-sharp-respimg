@@ -3,7 +3,7 @@ const fs = require("fs");
 
 module.exports = (eleventyConfig, pluginNamespace) => {
     eleventyConfig.namespace(pluginNamespace, () => {
-        eleventyConfig.addPairedShortcode("respimg", (data, src, alt, imgDir, widths, sizes) => {
+        eleventyConfig.addPairedShortcode("respimg", (data, src, alt, imgDir, widths, sizes, className, width, height) => {
             const fileName = src.slice(0, -4);
             function bytesToKB(bytes) {
                 const kbRatio = 1 * Math.pow(10, -3);
@@ -118,22 +118,26 @@ module.exports = (eleventyConfig, pluginNamespace) => {
     
                 console.log(`Transforming ${imgDir}${src}, one moment!`);
             }
+            const relDir = imgDir.slice(1);
             const imgMarkup = 
             `<img 
-                srcSet="${imgDir}${fileName}-large.jpg ${widths.large}w,
-                    ${imgDir}${fileName}-med.jpg ${widths.med}w,
-                    ${imgDir}${fileName}-small.jpg ${widths.small}w"
+                srcSet="${relDir}${fileName}-large.jpg ${widths.large}w,
+                    ${relDir}${fileName}-med.jpg ${widths.med}w,
+                    ${relDir}${fileName}-small.jpg ${widths.small}w"
                 sizes="${sizes}"
-                src="${imgDir}${fileName}-small.jpg"
+                src="${relDir}${fileName}-small.jpg"
                 alt="${alt}"
-                loading="lazy">`;
+                loading="lazy"
+                class="${className}"
+                width="${width}"
+                height="${height}">`;
             const pictureMarkup =
             `<picture>
                 <source 
                     type="image/webp"
-                    srcSet="${imgDir}${fileName}-large.webp ${widths.large}w,
-                        ${imgDir}${fileName}-med.webp ${widths.med}w,
-                        ${imgDir}${fileName}-small.webp ${widths.small}w"
+                    srcSet="${relDir}${fileName}-large.webp ${widths.large}w,
+                        ${relDir}${fileName}-med.webp ${widths.med}w,
+                        ${relDir}${fileName}-small.webp ${widths.small}w"
                     sizes="${sizes}"
                 >
                 ${imgMarkup}
