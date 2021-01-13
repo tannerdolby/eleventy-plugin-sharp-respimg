@@ -23,7 +23,8 @@
     "responsive-images",
     "images",
     "eleventy",
-    "11ty"
+    "11ty",
+    "eleventy-plugin"
   ],
   "author": {
     "url": "https://github.com/tannerdolby",
