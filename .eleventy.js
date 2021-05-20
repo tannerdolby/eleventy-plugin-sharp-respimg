@@ -193,10 +193,10 @@ module.exports = (eleventyConfig, pluginNamespace) => {
                 if (data.overwrite && i == 6) {
                     transform(data.src);
                 } else if (!data.overwrite && i == 6) {
-                    return;
+                    // bail
                 }
             }
-            return pictureMarkup; 
+            return pictureMarkup;
         });
    });
 };
