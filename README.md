@@ -20,15 +20,15 @@ It turns paired shortcodes like this:
 
 ```js
 {% respimg 
-    "car.jpg", 
-    "Photo of a car", 
-    "./images/",
-    { small: 320, med: 640, large: 1024 },
-    "(min-width: 450px) 33.3vw, 100vw",
-    "my-image",
-    "1024",
-    "768"
-%}{% endrespimg %}
+    src="car.jpg", 
+    alt="Photo of a car", 
+    imgDir="./images/",
+    widths={ small: 320, med: 640, large: 1024 },
+    sizes="(min-width: 450px) 33.3vw, 100vw",
+    class="my-image",
+    width="1024",
+    height="768"
+%}
 ```
 into responsive image markup using `<picture>` tags like this:
 ```html
@@ -63,7 +63,7 @@ If you have already used the utility to transform an image and you call `respimg
 ## Transform mulitple images
 The real power of using this paired shortcode is the ability to use data from [global data files](https://www.11ty.dev/docs/data-global/) or [front matter](https://www.11ty.dev/docs/data-frontmatter/) to transform multiple images at once.
 
-If you have global JSON data stored in `data.json` which is an array of objects like this:
+If you have global JSON data stored in `data.json` or in front matter which is an array of objects like this:
 
 ```json
 [
@@ -102,15 +102,15 @@ you can use the paired shortcode to transform multiple images with varying dimen
 ```js
 {% for image in data %}
     {% respimg 
-        image.src, 
-        image.alt, 
-        image.imgDir,
-        image.widths, 
-        image.sizes,
-        image.class,
-        image.width,
-        image.height
-    %}{% endrespimg %}
+        src=image.src, 
+        alt=image.alt, 
+        imgDir=image.imgDir,
+        widths=image.widths, 
+        sizes=image.sizes,
+        class=image.class,
+        width=image.width,
+        height=image.height
+    %}
 {% endfor %}
 ```
 
@@ -126,6 +126,7 @@ you can use the paired shortcode to transform multiple images with varying dimen
 | class     | Class name for the fallback image.   |
 | width     | The fallback image `width` attribute.  |
 | height    | The fallback image `height` attribute. |
+| overwrite | A boolean to overwrite existing generated images. |
 
 ## Notes
 - Use `./` when declaring the image directory parameter as Sharp expects this.
