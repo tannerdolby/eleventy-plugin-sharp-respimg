@@ -166,7 +166,7 @@ module.exports = (eleventyConfig, pluginNamespace) => {
                 case fs.existsSync(files.small_webp):
                     break;
                 default:
-                    console.log(`${data.imgDir}${data.src} exists and can be transformed!`);
+                    console.log(`Transforming ${data.imgDir}${data.src}`);
                     transform(data.src);
                     break;
             }
