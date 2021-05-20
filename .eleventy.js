@@ -3,111 +3,109 @@ const fs = require("fs");
 
 module.exports = (eleventyConfig, pluginNamespace) => {
     eleventyConfig.namespace(pluginNamespace, () => {
-        eleventyConfig.addPairedShortcode("respimg", (data, src, alt, imgDir, widths, sizes, className, width, height) => {
-            const fileName = src.slice(0, -4);
+        eleventyConfig.addShortcode("respimg", (data) => {
+            const fileName = data.src.slice(0, -4);
+            let widths = data.widths.sort((a,b) => a - b);
+            if (widths.length < 2) {
+                throw new Error("The `widths` array expects atleast 3 string values");
+            }
             function bytesToKB(bytes) {
                 const kbRatio = 1 * Math.pow(10, -3);
                 return (bytes * kbRatio).toFixed(2);
             }
             function smallJpeg(stream, file) {
-                const width = widths.small;
                 return stream
                     .clone()
-                    .jpeg({ quality: 85 })
-                    .resize({ width: width })
-                    .toFile(`${imgDir}${file}-small.jpg`)
+                    .jpeg({ quality: data.quality ? data.quality : 85 })
+                    .resize({ width: widths[0] })
+                    .toFile(`${data.imgDir}${file}-small.jpg`)
                     .then(res => {
-                        res.file = `${imgDir}${file}-small.jpg`;
+                        res.file = `${data.imgDir}${file}-small.jpg`;
                         res.size = `${bytesToKB(res.size)} KB`;
-                        console.log(res);
+                        data.debug ? console.log(res) : null;
                     })
                     .catch(err => {
-                        console.log(`Error transforming ${imgDir}${src} to a small sized JPEG`, err);
+                        console.log(`Error transforming ${data.imgDir}${data.src} to a small sized JPEG`, err);
                     })
             };
             function medJpeg(stream, file) {
-                const width = widths.med;
                 return stream
                     .clone()
-                    .jpeg({ quality: 85 })
-                    .resize({ width: width })
-                    .toFile(`${imgDir}${file}-med.jpg`)
+                    .jpeg({ quality: data.quality ? data.quality : 85 })
+                    .resize({ width: widths[1] })
+                    .toFile(`${data.imgDir}${file}-med.jpg`)
                     .then(res => {
-                        res.file = `${imgDir}${file}-med.jpg`;
+                        res.file = `${data.imgDir}${file}-med.jpg`;
                         res.size = `${bytesToKB(res.size)} KB`;
-                        console.log(res);
+                        data.debug ? console.log(res) : null;
                     })
                     .catch(err => {
-                        console.log(`Error transforming ${imgDir}${src} to a medium sized JPEG`, err);
+                        console.log(`Error transforming ${data.imgDir}${data.src} to a medium sized JPEG`, err);
                     })
             };
             function largeJpeg(stream, file) {
-                const width = widths.large;
                 return stream  
                     .clone()
-                    .jpeg({ quality: 85 })
-                    .resize({ width: width })
-                    .toFile(`${imgDir}${file}-large.jpg`)
+                    .jpeg({ quality: data.quality ? data.quality : 85 })
+                    .resize({ width: widths[2] })
+                    .toFile(`${data.imgDir}${file}-large.jpg`)
                     .then(res => {
-                        res.file = `${imgDir}${file}-large.jpg`;
+                        res.file = `${data.imgDir}${file}-large.jpg`;
                         res.size = `${bytesToKB(res.size)} KB`;
-                        console.log(res);
+                        data.debug ? console.log(res) : null;
                     })
                     .catch(err => {
-                        console.log(`Error transforming ${imgDir}${src} to a large JPEG format`, err);
+                        console.log(`Error transforming ${data.imgDir}${data.src} to a large JPEG format`, err);
                     })
             };
             function smallWebp(stream, file) {
-                const width = widths.small;
                 return stream
                     .clone()
-                    .webp({ quality: 85 })
-                    .resize({ width: width })
-                    .toFile(`${imgDir}${file}-small.webp`)
+                    .webp({ quality: data.quality ? data.quality : 85 })
+                    .resize({ width: widths[0] })
+                    .toFile(`${data.imgDir}${file}-small.webp`)
                     .then(res => {
-                        res.file = `${imgDir}${file}-small.webp`;
+                        res.file = `${data.imgDir}${file}-small.webp`;
                         res.size = `${bytesToKB(res.size)} KB`;
-                        console.log(res);
+                        data.debug ? console.log(res) : null;
                     })
                     .catch(err => {
-                        console.log(`Error transforming ${imgDir}${src} to small WebP format`, err);
+                        console.log(`Error transforming ${data.imgDir}${data.src} to small WebP format`, err);
                     })
             };
             function medWebp(stream, file) {
-                const width = widths.med;
                 return stream
                     .clone()
-                    .webp({ quality: 85 })
-                    .resize({ width: width })
-                    .toFile(`${imgDir}${file}-med.webp`)
+                    .webp({ quality: data.quality ? data.quality : 85 })
+                    .resize({ width: widths[1] })
+                    .toFile(`${data.imgDir}${file}-med.webp`)
                     .then(res => {
-                        res.file = `${imgDir}${file}-med.webp`;
+                        res.file = `${data.imgDir}${file}-med.webp`;
                         res.size = `${bytesToKB(res.size)} KB`;
-                        console.log(res);
+                        data.debug ? console.log(res) : null;
                     })
                     .catch(err => {
-                        console.log(`Error transforming ${imgDir}${src} to medium sized webp`, err);
+                        console.log(`Error transforming ${data.imgDir}${data.src} to medium sized webp`, err);
                     })
             };
             function largeWebp(stream, file) {
-                const width = widths.large;
                 return stream
                     .clone()
-                    .webp({ quality: 85 })
-                    .resize({ width: width })
-                    .toFile(`${imgDir}${file}-large.webp`)
+                    .webp({ quality: data.quality ? data.quality : 85 })
+                    .resize({ width: widths[2] })
+                    .toFile(`${data.imgDir}${file}-large.webp`)
                     .then(res => {
-                        res.file = `${imgDir}${file}-large.webp`;
+                        res.file = `${data.imgDir}${file}-large.webp`;
                         res.size = `${bytesToKB(res.size)} KB`;
-                        console.log(res);
+                        data.debug ? console.log(res) : null;
                     })
                     .catch(err => {
-                        console.log(`Error transforming ${imgDir}${src} to small sized webp`, err);
+                        console.log(`Error transforming ${data.imgDir}${data.src} to small sized webp`, err);
                     })
             };
             function transform(img) {
                 const fileName = img.slice(0, -4);
-                const parentStream = sharp(imgDir.concat(img));
+                const parentStream = sharp(data.imgDir.concat(img));
                 
                 smallJpeg(parentStream, fileName);
                 medJpeg(parentStream, fileName);
@@ -115,42 +113,46 @@ module.exports = (eleventyConfig, pluginNamespace) => {
                 smallWebp(parentStream, fileName);
                 medWebp(parentStream, fileName);
                 largeWebp(parentStream, fileName);
-    
-                console.log(`Transforming ${imgDir}${src}, one moment!`);
             }
-            const relDir = imgDir.slice(1);
+            const relDir = data.imgDir.slice(1);
             const imgMarkup = 
             `<img 
-                srcSet="${relDir}${fileName}-large.jpg ${widths.large}w,
-                    ${relDir}${fileName}-med.jpg ${widths.med}w,
-                    ${relDir}${fileName}-small.jpg ${widths.small}w"
-                sizes="${sizes}"
+                srcSet="${relDir}${fileName}-large.jpg ${data.widths.large}w,
+                    ${relDir}${fileName}-med.jpg ${data.widths.med}w,
+                    ${relDir}${fileName}-small.jpg ${data.widths.small}w"
+                sizes="${data.sizes}"
                 src="${relDir}${fileName}-small.jpg"
-                alt="${alt}"
+                alt="${data.alt}"
                 loading="lazy"
-                class="${className}"
-                width="${width}"
-                height="${height}">`;
+                class="${data.className}"
+                width="${data.width}"
+                height="${data.height}">`;
             const pictureMarkup =
             `<picture>
                 <source 
                     type="image/webp"
-                    srcSet="${relDir}${fileName}-large.webp ${widths.large}w,
-                        ${relDir}${fileName}-med.webp ${widths.med}w,
-                        ${relDir}${fileName}-small.webp ${widths.small}w"
-                    sizes="${sizes}"
+                    srcSet="${relDir}${fileName}-large.webp ${data.widths.large}w,
+                        ${relDir}${fileName}-med.webp ${data.widths.med}w,
+                        ${relDir}${fileName}-small.webp ${data.widths.small}w"
+                    sizes="${data.sizes}"
                 >
                 ${imgMarkup}
             </picture>`
             const files = {
-                large_jpg: `${imgDir}${fileName}-large.jpg`,
-                med_jpg: `${imgDir}${fileName}-med.jpg`,
-                small_jpg: `${imgDir}${fileName}-small.jpg`,
-                large_webp: `${imgDir}${fileName}-large.webp`,
-                med_webp: `${imgDir}${fileName}-med.webp`,
-                small_webp: `${imgDir}${fileName}-small.webp`
+                large_jpg: `${data.imgDir}${fileName}-large.jpg`,
+                med_jpg: `${data.imgDir}${fileName}-med.jpg`,
+                small_jpg: `${data.imgDir}${fileName}-small.jpg`,
+                large_webp: `${data.imgDir}${fileName}-large.webp`,
+                med_webp: `${data.imgDir}${fileName}-med.webp`,
+                small_webp: `${data.imgDir}${fileName}-small.webp`
             };
-            switch (fs.existsSync(imgDir.concat(src))) {
+            let fileExists = fs.existsSync(data.imgDir.concat(data.src));
+
+            if (!fileExists) {
+                throw new Error(`Image doesn't exist! Cannot locate ${data.imgDir.concat(data.src)}`);
+            }
+
+            switch (fileExists) {
                 case fs.existsSync(files.large_jpg):
                     break;
                 case fs.existsSync(files.large_webp): 
@@ -164,11 +166,11 @@ module.exports = (eleventyConfig, pluginNamespace) => {
                 case fs.existsSync(files.small_webp):
                     break;
                 default:
-                    console.log(`${imgDir}${src} exists and can be transformed!`);
-                    transform(src);
+                    console.log(`${data.imgDir}${data.src} exists and can be transformed!`);
+                    transform(data.src);
                     break;
             }
             return pictureMarkup; 
         });
-    });
+   });
 };
