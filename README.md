@@ -57,6 +57,59 @@ into responsive image markup using `<picture>` tags like this:
 - The images are responsive by using a `<picture>` element which contains zero or more `<source>` elements and one `<img>` element to offer alternative versions of an image for different display/device scenarios. 
 - Using `srcset` and `sizes`, you can deliver [variable-resolution images](https://www.smashingmagazine.com/2014/05/responsive-images-done-right-guide-picture-srcset/), which respond to variable layout widths and screen densities.
 
+## Usage Options
+Supply the values as name=value pairs to the shortcode like shown in the example above. 
+
+You can also use global data or front matter to supply values to the shortcode like this:
+
+```nunjucks
+---
+src: yellow-modern.png
+alt: Some alt text
+imgDir: ./images/
+widths: 
+    - 320
+    - 640
+    - 1024
+sizes: "(min-width: 450px) 33.3vw, 100vw"
+class: test-class
+width: 1024
+height: 768
+---
+{% respimg
+    src=src,
+    alt=alt,
+    imgDir=imgDir,
+    widths=widths,
+    sizes=sizes,
+    class=class,
+    width=width,
+    height=height,
+    debug=true
+%}
+```
+
+Or in a one liner by defining an object with the required properties:
+
+```nunjucks
+---
+data:
+    src: yellow-modern.png
+    alt: Some alt text
+    imgDir: ./images/
+    widths: 
+        - 320
+        - 640
+        - 1024
+    sizes: "(min-width: 450px) 33.3vw, 100vw"
+    class: test-class
+    width: 1024
+    height: 768
+---
+
+{% respimg data %}
+```
+
 ### Using the paired shortcode more than once for the same image
 If you have already used the utility to transform an image and you call `respimg` within your code again for the same file, it will only generate the responsive image markup using `<picture>` for that image and skip the image transformation as it checks the file system to make sure those resized images already exist.
 
