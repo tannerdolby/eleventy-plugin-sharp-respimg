@@ -117,9 +117,9 @@ module.exports = (eleventyConfig, pluginNamespace) => {
             const relDir = data.imgDir.slice(1);
             const imgMarkup = 
             `<img 
-                srcSet="${relDir}${fileName}-large.jpg ${data.widths.large}w,
-                    ${relDir}${fileName}-med.jpg ${data.widths.med}w,
-                    ${relDir}${fileName}-small.jpg ${data.widths.small}w"
+                srcSet="${relDir}${fileName}-large.jpg ${data.widths[2]}w,
+                    ${relDir}${fileName}-med.jpg ${data.widths[1]}w,
+                    ${relDir}${fileName}-small.jpg ${data.widths[0]}w"
                 sizes="${data.sizes}"
                 src="${relDir}${fileName}-small.jpg"
                 alt="${data.alt}"
@@ -131,9 +131,9 @@ module.exports = (eleventyConfig, pluginNamespace) => {
             `<picture>
                 <source 
                     type="image/webp"
-                    srcSet="${relDir}${fileName}-large.webp ${data.widths.large}w,
-                        ${relDir}${fileName}-med.webp ${data.widths.med}w,
-                        ${relDir}${fileName}-small.webp ${data.widths.small}w"
+                    srcSet="${relDir}${fileName}-large.webp ${data.widths[2]}w,
+                        ${relDir}${fileName}-med.webp ${data.widths[1]}w,
+                        ${relDir}${fileName}-small.webp ${data.widths[0]}w"
                     sizes="${data.sizes}"
                 >
                 ${imgMarkup}
