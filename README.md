@@ -198,9 +198,8 @@ Recommended fallback `<img>` boilerplate CSS:
 }
 ```
 
-## TODO
-- [x] Allow the widths parameter to be an array of values rather than an object.
-- [x] Image quality is set at `quality: 85`, maybe allow `quality` to be an optional param if you need very high quality images.
+## Maintainers
+[@tannerdolby](https://github.com/tannerdolby)
 
 ## Other Responsive Image Plugins
 - [eleventy-img](https://github.com/11ty/eleventy-img)
