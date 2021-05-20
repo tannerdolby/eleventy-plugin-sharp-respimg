@@ -67,7 +67,8 @@ You can also use global data or front matter to supply values to the shortcode l
 ---
 src: yellow-modern.png
 alt: Some alt text
-imgDir: ./images/
+inputDir: ./src
+imgDir: /images/
 widths: 
     - 320
     - 640
@@ -80,6 +81,7 @@ height: 768
 {% respimg
     src=src,
     alt=alt,
+    inputDir=inputDir,
     imgDir=imgDir,
     widths=widths,
     sizes=sizes,
@@ -97,7 +99,8 @@ Or in a one liner by defining an object with the required properties:
 data:
     src: yellow-modern.png
     alt: Some alt text
-    imgDir: ./images/
+    inputDir: ./src
+    imgDir: /images/
     widths: 
         - 320
         - 640
@@ -159,6 +162,7 @@ you can use the paired shortcode to transform multiple images with varying dimen
     {% respimg 
         src=image.src, 
         alt=image.alt, 
+        inputDir="./src",
         imgDir=image.imgDir,
         widths=image.widths, 
         sizes=image.sizes,
@@ -182,9 +186,9 @@ you can use the paired shortcode to transform multiple images with varying dimen
 | className     | `string` | Class name for the fallback image.   |
 | width     | `int` | The fallback image `width` attribute.  |
 | height    | `int` | The fallback image `height` attribute. |
-| quality   | `int` (Optional) | The quality for Sharp to generate images width. (Default: 85) |
+| quality   | `int` | The quality for Sharp to generate images width. (Default: 85) |
 | overwrite | `boolean` | Determines if Sharp generates another set of images for a given input. Make sure this is `false` when serving locally. (Default: false)
-| debug | `boolean` (Optional) | A boolean to include console output of generated image metadata. |
+| debug | `boolean` | A boolean to include console output of generated image metadata. |
 
 ## Notes
 - Use `./` when declaring the `inputDir` parameter as Sharp expects this.
