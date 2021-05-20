@@ -84,8 +84,7 @@ height: 768
     sizes=sizes,
     class=class,
     width=width,
-    height=height,
-    debug=true
+    height=height
 %}
 ```
 
