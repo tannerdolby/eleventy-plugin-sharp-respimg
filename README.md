@@ -23,7 +23,7 @@ It turns paired shortcodes like this:
     src="car.jpg", 
     alt="Photo of a car", 
     imgDir="./images/",
-    widths={ small: 320, med: 640, large: 1024 },
+    widths=["320", "640", "1024"],
     sizes="(min-width: 450px) 33.3vw, 100vw",
     class="my-image",
     width="1024",
