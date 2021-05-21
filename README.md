@@ -87,8 +87,7 @@ height: 768
     sizes=sizes,
     className=class,
     width=width,
-    height=height,
-    overwrite=true
+    height=height
 %}
 ```
 
@@ -183,6 +182,7 @@ you can use the paired shortcode to transform multiple images with varying dimen
 | imgDir    | `string` | The directory where the image file is located. Relative to `inputDir`. |
 | widths    | `int[]` or `string[]` | The desired image widths. Supports any three values. Must provide atleast 3 values in ascending order. (small, med, large) |
 | sizes     | `string` | The `sizes` attribute which defines a set of media conditions. |
+| id | `string` | The `id` attribute for `<img>` elements inside the generated `<picture>`. Remember `id`'s may only be used once on a page, they must be unique and cannot repeat. |
 | className     | `string` | Class name for the fallback image.   |
 | width     | `int` | The fallback image `width` attribute.  |
 | height    | `int` | The fallback image `height` attribute. |
