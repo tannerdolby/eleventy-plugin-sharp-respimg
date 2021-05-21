@@ -2,7 +2,7 @@ const sharp = require("sharp");
 const fs = require("fs");
 
 module.exports = (eleventyConfig, pluginNamespace) => {
-    //eleventyConfig.namespace(pluginNamespace, () => {
+    eleventyConfig.namespace(pluginNamespace, () => {
         eleventyConfig.addShortcode("respimg", (data) => {
             let extRegex = /[^.]+$/gm;
             let fileRegex = /^\w+[^.]+/gm;
@@ -220,12 +220,5 @@ module.exports = (eleventyConfig, pluginNamespace) => {
             }
             return pictureMarkup;
         });
-   //});
-   eleventyConfig.addPassthroughCopy("./src/images/");
-   return {
-       dir: {
-           input: "src",
-           output: "_site"
-       }
-   }
+   });
 };
