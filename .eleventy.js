@@ -36,15 +36,11 @@ module.exports = (eleventyConfig, pluginNamespace) => {
                 throw new Error("Invalid image format: Accepted formats are png, jpg, jpeg, avif, webp");
             }
 
-            let widths = [];
-
-            if (data.widths) {
-                widths = data.widths
-                .sort((a,b) => a - b)
-                .map(w => {
-                    return typeof w == 'string' ? parseInt(w, 10) : w;
-                });
-            }
+            let widths = data.widths
+                    .sort((a,b) => a - b)
+                    .map(w => {
+                        return typeof w == 'string' ? parseInt(w, 10) : w;
+                    });
 
             if (widths.length < 2 && widths.length) {
                 throw new Error("The `widths` array expects atleast 3 string values");
