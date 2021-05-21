@@ -20,7 +20,7 @@ It turns paired shortcodes like this:
 
 ```js
 {% respimg 
-    src="car.jpg", 
+    src="car.png", 
     alt="Photo of a car", 
     inputDir="./src",
     imgDir="/images/",
@@ -42,11 +42,11 @@ into responsive image markup using `<picture>` tags like this:
         sizes="(min-width: 450px) 33.3vw, 100vw"
     >
     <img 
-        srcSet="/images/car-large.jpg 1024w,
-                /images/car-med.jpg 640w,
-                /images/car-small.jpg 320w"
+        srcSet="/images/car-large.jpeg 1024w,
+                /images/car-med.jpeg 640w,
+                /images/car-small.jpeg 320w"
         sizes="(min-width: 450px) 33.3vw, 100vw"
-        src="car-small.jpg"
+        src="car-small.jpeg"
         alt="Photo of a car"
         loading="lazy"
         class="my-image"
@@ -124,7 +124,7 @@ If you have global JSON data stored in `data.json` or in front matter which is a
 ```json
 [
     {
-        "src": "car.jpg",
+        "src": "car.png",
         "alt": "Photo of a car",
         "inputDir": "./src",
         "imgDir": "/images/",
@@ -139,7 +139,7 @@ If you have global JSON data stored in `data.json` or in front matter which is a
         "height": 768
     },
     {
-        "src": "flower.jpg",
+        "src": "flower.png",
         "alt": "Photo of a flower",
         "imgDir": "./images/",
         "widths": {
