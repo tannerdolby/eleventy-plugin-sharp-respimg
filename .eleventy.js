@@ -2,7 +2,7 @@ const sharp = require("sharp");
 const fs = require("fs");
 
 module.exports = (eleventyConfig, pluginNamespace) => {
-    eleventyConfig.namespace(pluginNamespace, () => {
+    //eleventyConfig.namespace(pluginNamespace, () => {
         eleventyConfig.addShortcode("respimg", (data) => {
             let extRegex = /[^.]+$/gm;
             let fileRegex = /^\w+[^.]+/gm;
@@ -15,18 +15,38 @@ module.exports = (eleventyConfig, pluginNamespace) => {
                 "webp",
                 "avif"
             ];
+            const reqArgs = [
+                "src",
+                "alt",
+                "inputDir",
+                "imgDir",
+                "widths",
+                "sizes",
+                "width",
+                "height"
+            ];
+
+            for (const prop of reqArgs) {
+                if (typeof data[prop] == 'undefined') {
+                    throw new Error(`Missing '${prop}' argument`);
+                }
+            }
 
             if (!imgFormats.includes(format[0])) {
                 throw new Error("Invalid image format: Accepted formats are png, jpg, jpeg, avif, webp");
             }
 
-            let widths = data.widths
+            let widths = [];
+
+            if (data.widths) {
+                widths = data.widths
                 .sort((a,b) => a - b)
                 .map(w => {
                     return typeof w == 'string' ? parseInt(w, 10) : w;
                 });
-            
-            if (widths.length < 2) {
+            }
+
+            if (widths.length < 2 && widths.length) {
                 throw new Error("The `widths` array expects atleast 3 string values");
             }
             
@@ -151,7 +171,8 @@ module.exports = (eleventyConfig, pluginNamespace) => {
                 src="${data.imgDir}${fileName}-small.jpeg"
                 alt="${data.alt}"
                 loading="lazy"
-                class="${data.className}"
+                ${data.id ? `id='${data.id}'` : ''}
+                class="${data.className ? data.className : ''}"
                 width="${data.width}"
                 height="${data.height}">`;
             const pictureMarkup =
@@ -164,7 +185,8 @@ module.exports = (eleventyConfig, pluginNamespace) => {
                     sizes="${data.sizes}"
                 >
                 ${imgMarkup}
-            </picture>`
+            </picture>`;
+            
             const files = {
                 large_jpg: `${data.inputDir}${data.imgDir}${fileName}-large.jpeg`,
                 med_jpg: `${data.inputDir}${data.imgDir}${fileName}-med.jpeg`,
@@ -198,5 +220,12 @@ module.exports = (eleventyConfig, pluginNamespace) => {
             }
             return pictureMarkup;
         });
-   });
+   //});
+   eleventyConfig.addPassthroughCopy("./src/images/");
+   return {
+       dir: {
+           input: "src",
+           output: "_site"
+       }
+   }
 };
