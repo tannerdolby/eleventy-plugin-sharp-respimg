@@ -193,12 +193,8 @@ module.exports = (eleventyConfig, pluginNamespace) => {
             };
 
             let fileExists = fs.existsSync(`${data.inputDir}${data.imgDir.concat(data.src)}`);
-
-            if (!fileExists) {
-                throw new Error(`Image doesn't exist! Cannot locate ${data.inputDir}${data.imgDir.concat(data.src)}`);
-            }
-
             let i = 0;
+
             if (fileExists) { 
                 for (const name in files) {
                     if (fs.existsSync(files[name])) {
@@ -210,9 +206,9 @@ module.exports = (eleventyConfig, pluginNamespace) => {
                 }
                 if (data.overwrite && i == 6) {
                     transform(data.src);
-                } else if (!data.overwrite && i == 6) {
-                    // bail
-                }
+                } 
+            } else {
+                throw new Error(`Image doesn't exist! Cannot locate ${data.inputDir}${data.imgDir.concat(data.src)}`);
             }
             return pictureMarkup;
         });
