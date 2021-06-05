@@ -186,6 +186,7 @@ you can use the paired shortcode to transform multiple images with varying dimen
 | className     | `string` | Class name for the fallback image.   |
 | width     | `int` | The fallback image `width` attribute.  |
 | height    | `int` | The fallback image `height` attribute. |
+| fallbackSrcWidth | `int` | Width of the fallback image in the `src` attribute. |
 | quality   | `int` | The quality for Sharp to generate images width. (Default: 85) |
 | overwrite | `boolean` | Determines if Sharp generates another set of images for a given input. Make sure this is `false` when serving locally. (Default: false)
 | debug | `boolean` | A boolean to include console output of generated image metadata. |
