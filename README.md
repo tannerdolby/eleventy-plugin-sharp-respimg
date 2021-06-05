@@ -36,17 +36,17 @@ into responsive image markup using `<picture>` tags like this:
  <picture>
     <source 
         type="image/webp"
-        srcSet="/images/car-large.webp 1024w,
-                /images/car-med.webp 640w,
-                /images/car-small.webp 320w"
+        srcSet="/images/car-320.webp 320w,
+                /images/car-640.webp 640w,
+                /images/car-1024.webp 1024w"
         sizes="(min-width: 450px) 33.3vw, 100vw"
     >
     <img 
-        srcSet="/images/car-large.jpeg 1024w,
-                /images/car-med.jpeg 640w,
-                /images/car-small.jpeg 320w"
+        srcSet="/images/car-320.jpeg 320w,
+                /images/car-640.jpeg 640w,
+                /images/car-1024.jpeg 1024w"
         sizes="(min-width: 450px) 33.3vw, 100vw"
-        src="car-small.jpeg"
+        src="car-320.jpeg"
         alt="Photo of a car"
         loading="lazy"
         class="my-image"
@@ -128,11 +128,7 @@ If you have global JSON data stored in `data.json` or in front matter which is a
         "alt": "Photo of a car",
         "inputDir": "./src",
         "imgDir": "/images/",
-        "widths": {
-            "small": 320,
-            "med": 640,
-            "large": 1024
-        },
+        "widths": [320, 640, 1024],
         "sizes": "(min-width: 450px) 33.3vw, 100vw",
         "class": "my-image",
         "width": 1024,
@@ -142,11 +138,7 @@ If you have global JSON data stored in `data.json` or in front matter which is a
         "src": "flower.png",
         "alt": "Photo of a flower",
         "imgDir": "./images/",
-        "widths": {
-            "small": 400,
-            "med": 600,
-            "large": 1024
-        },
+        "widths": [400, 600, 1024],
         "sizes": "(min-width: 450px) 33.3vw, 100vw",
         "class": "my-image",
         "width": 1024,
@@ -180,7 +172,7 @@ you can use the paired shortcode to transform multiple images with varying dimen
 | alt       | `string` | A text description of the image. |
 | inputDir  | `string` | The `input` directory in your Eleventy config file. |
 | imgDir    | `string` | The directory where the image file is located. Relative to `inputDir`. |
-| widths    | `int[]` or `string[]` | The desired image widths. Supports any three values. Must provide atleast 3 values in ascending order. (small, med, large) |
+| widths    | `int[]` or `string[]` | The desired image widths. Supports up to 10 values. Must provide atleast 3 values in ascending order. |
 | sizes     | `string` | The `sizes` attribute which defines a set of media conditions. |
 | id | `string` | The `id` attribute for `<img>` elements inside the generated `<picture>`. Remember `id`'s may only be used once on a page, they must be unique and cannot repeat. |
 | className     | `string` | Class name for the fallback image.   |
