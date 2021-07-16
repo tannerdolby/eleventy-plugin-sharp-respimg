@@ -25,7 +25,7 @@ It turns paired shortcodes like this:
     inputDir="./src",
     imgDir="/images/",
     widths=[320, 640, 1024],
-    sizes="(min-width: 450px) 33.3vw, 100vw",
+    sizes="(max-width: 450px) 33.3vw, 100vw",
     className="my-image",
     width=1024,
     height=768
@@ -39,13 +39,13 @@ into responsive image markup using `<picture>` tags like this:
         srcSet="/images/car-320.webp 320w,
                 /images/car-640.webp 640w,
                 /images/car-1024.webp 1024w"
-        sizes="(min-width: 450px) 33.3vw, 100vw"
+        sizes="(max-width: 450px) 33.3vw, 100vw"
     >
     <img 
         srcSet="/images/car-320.jpeg 320w,
                 /images/car-640.jpeg 640w,
                 /images/car-1024.jpeg 1024w"
-        sizes="(min-width: 450px) 33.3vw, 100vw"
+        sizes="(max-width: 450px) 33.3vw, 100vw"
         src="car-320.jpeg"
         alt="Photo of a car"
         loading="lazy"
@@ -59,7 +59,7 @@ into responsive image markup using `<picture>` tags like this:
 - Using `srcset` and `sizes`, you can deliver [variable-resolution images](https://www.smashingmagazine.com/2014/05/responsive-images-done-right-guide-picture-srcset/), which respond to variable layout widths and screen densities.
 
 ## Usage Options
-Supply the values as name=value pairs to the shortcode like shown in the example above. 
+Supply the values as name-value pairs to the shortcode like shown in the example above. 
 
 You can also use global data or front matter to supply values to the shortcode like this:
 
@@ -73,7 +73,7 @@ widths:
     - 320
     - 640
     - 1024
-sizes: "(min-width: 450px) 33.3vw, 100vw"
+sizes: "(max-width: 450px) 33.3vw, 100vw"
 className: test-class
 width: 1024
 height: 768
@@ -104,7 +104,7 @@ data:
         - 320
         - 640
         - 1024
-    sizes: "(min-width: 450px) 33.3vw, 100vw"
+    sizes: "(max-width: 450px) 33.3vw, 100vw"
     className: test-class
     width: 1024
     height: 768
@@ -138,8 +138,8 @@ If you have global JSON data stored in `data.json` or in front matter which is a
         "src": "flower.png",
         "alt": "Photo of a flower",
         "imgDir": "./images/",
-        "widths": [400, 600, 1024],
-        "sizes": "(min-width: 450px) 33.3vw, 100vw",
+        "widths": [320, 480, 640, 1024],
+        "sizes": "(max-width: 450px) 33.3vw, 100vw",
         "class": "my-image",
         "width": 1024,
         "height": 768
