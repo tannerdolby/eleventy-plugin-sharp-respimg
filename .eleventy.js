@@ -37,7 +37,7 @@ module.exports = (eleventyConfig, pluginNamespace) => {
             }
 
             let widths = data.widths
-                    .sort((a,b) => a - b)
+                    .sort((a,b) => b - a)
                     .map(w => {
                         return typeof w == 'string' ? parseInt(w, 10) : w;
                     });
@@ -164,5 +164,5 @@ module.exports = (eleventyConfig, pluginNamespace) => {
             }
             return html;
         });
-   });
+    });
 };
