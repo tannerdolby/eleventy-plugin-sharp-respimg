@@ -42,8 +42,8 @@ module.exports = (eleventyConfig, pluginNamespace) => {
                         return typeof w == 'string' ? parseInt(w, 10) : w;
                     });
 
-            if (widths.length && widths.length >= 10) {
-                console.errror("The `widths` array cannot have more than 10 values");
+            if (widths.length && widths.length > 10) {
+                console.error("The `widths` array cannot have more than 10 values");
                 return;
             }
             
