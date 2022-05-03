@@ -42,11 +42,6 @@ module.exports = (eleventyConfig, pluginNamespace) => {
                         return typeof w == 'string' ? parseInt(w, 10) : w;
                     });
 
-            if (widths.length && widths.length > 10) {
-                console.error("The `widths` array cannot have more than 10 values");
-                return;
-            }
-            
             function bytesToKB(bytes) {
                 const kbRatio = 1 * Math.pow(10, -3);
                 return (bytes * kbRatio).toFixed(2);
