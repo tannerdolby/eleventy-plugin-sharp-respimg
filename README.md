@@ -1,8 +1,6 @@
 # eleventy-plugin-sharp-respimg
 An Eleventy [shortcode](https://www.11ty.dev/docs/shortcodes/#paired-shortcodes) that performs build-time image transformations with [Sharp](https://www.npmjs.com/package/sharp) to resize large images into `.jpeg` and `.webp` formats with varying dimensions and generates `<picture>` tags for responsive images.
 
-Note: This plugin does the job but could definitely be optimized. I recommend using the supported image plugin built by the 11ty team [@11ty/eleventy-img](https://github.com/11ty/eleventy-img).
-
 ## Installation
 In your Eleventy project, [install the plugin](https://www.npmjs.com/package/eleventy-plugin-sharp-respimg) from npm:
 ```
