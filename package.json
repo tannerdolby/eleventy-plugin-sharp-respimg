@@ -1,12 +1,12 @@
 {
   "name": "eleventy-plugin-sharp-respimg",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "An Eleventy paired shortcode which performs build-time image transformations with Sharp and generates <picture> tags for responsive image markup.",
   "main": ".eleventy.js",
   "scripts": {
-    "build": "eleventy build",
-    "start": "eleventy --serve",
-    "debug": "DEBUG=* eleventy"
+    "build": "@11ty/eleventy",
+    "start": "@11ty/eleventy --serve",
+    "debug": "DEBUG=* @11ty/eleventy"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -33,7 +33,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "sharp": "^0.26.3"
+    "@11ty/eleventy": "^1.0.1",
+    "sharp": "^0.30.7"
   }
 }
