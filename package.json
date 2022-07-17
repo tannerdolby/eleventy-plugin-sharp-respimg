@@ -4,8 +4,8 @@
   "description": "An Eleventy paired shortcode which performs build-time image transformations with Sharp and generates <picture> tags for responsive image markup.",
   "main": ".eleventy.js",
   "scripts": {
-    "build": "@11ty/eleventy",
-    "start": "@11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve",
     "debug": "DEBUG=* @11ty/eleventy"
   },
   "publishConfig": {
